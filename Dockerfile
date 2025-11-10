@@ -18,7 +18,7 @@ RUN pip3 install --no-cache-dir \
 RUN mkdir -p /ros2_ws/src
 WORKDIR /ros2_ws
 
-COPY src/line_follower_CNN/package.xml ./src/line_follower_CNN/
+COPY src/turtlebot3_line_follower/package.xml ./src/turtlebot3_line_follower/
 
 RUN apt-get update && \
     rosdep update && \
