@@ -10,7 +10,7 @@ import math
 import time
 from collections import deque
 
-class CorrectedDualLineLaneKeeping(Node):
+class LaneKeeping(Node):
     def __init__(self):
         super().__init__('corrected_dual_line_lane_keeping')
 
@@ -710,7 +710,7 @@ class CorrectedDualLineLaneKeeping(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    corrected_lane_keeper = CorrectedDualLineLaneKeeping()
+    corrected_lane_keeper = LaneKeeping()
 
     try:
         rclpy.spin(corrected_lane_keeper)
