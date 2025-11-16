@@ -12,7 +12,7 @@ from collections import deque
 
 class LaneKeeping(Node):
     def __init__(self):
-        super().__init__('corrected_dual_line_lane_keeping')
+        super().__init__('lane_keeping')
 
         # ===== ROS2 SETUP =====
         self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
@@ -579,7 +579,7 @@ class LaneKeeping(Node):
         self.detection_stats['white_follow_rate'] = (self._stats_counters['white_follow'] / total_frames) * 100
 
     def show_corrected_debug(self, processed_image, lane_info, error, pid_output, image_width):
-        """Debug con visualizzazione posizione target corretta"""
+        """Debug con visualizzazione posizione target"""
 
         # Disegna centroidi rilevati
         if lane_info['yellow_line']:
@@ -625,7 +625,7 @@ class LaneKeeping(Node):
 
         # Info debug
         debug_info = [
-            f'=== CORRECTED DUAL-LINE LANE KEEPING ===',
+            f'=== LANE KEEPING ===',
             f'Frame: {self.frame_count}',
             f'',
             f'=== DETECTION & TARGET ===',
@@ -704,20 +704,20 @@ class LaneKeeping(Node):
                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, color, thickness)
             y_offset += 15
 
-        cv2.imshow('Corrected Dual-Line Lane Keeping Debug', processed_image)
+        cv2.imshow('Lane Keeping Debug', processed_image)
         cv2.waitKey(1)
 
 def main(args=None):
     rclpy.init(args=args)
 
-    corrected_lane_keeper = LaneKeeping()
+    lane_keeper = LaneKeeping()
 
     try:
-        rclpy.spin(corrected_lane_keeper)
+        rclpy.spin(lane_keeper)
     except KeyboardInterrupt:
         pass
     finally:
-        corrected_lane_keeper.destroy_node()
+        lane_keeper.destroy_node()
         rclpy.shutdown()
         cv2.destroyAllWindows()
 
