@@ -72,7 +72,7 @@ class LaneKeeping(Node):
 
         # ===== PARAMETRI SPECIFICI PER POSIZIONAMENTO =====
         # Distanza dalla linea gialla quando in modalità yellow-only
-        self.yellow_follow_distance = 200          # Pixel a DESTRA della gialla
+        self.yellow_follow_distance = 250          # Pixel a DESTRA della gialla
         self.yellow_follow_tolerance = 30          # Tolleranza posizionamento
 
         # Distanza dalla linea bianca quando in modalità white-only  
