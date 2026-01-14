@@ -12,7 +12,7 @@ from collections import deque
 
 class LaneKeeping(Node):
     def __init__(self):
-        super().__init__('lane_keeping')
+        super().__init__('lane_keeping_opencv')
 
         # ===== ROS2 SETUP =====
         self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
